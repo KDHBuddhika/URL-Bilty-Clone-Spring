@@ -1,6 +1,8 @@
 package com.url.shortener.controller;
 
 
+import com.url.shortener.dtos.JwtAuthenticationResponse;
+import com.url.shortener.dtos.LoginRequest;
 import com.url.shortener.dtos.RegisterRequest;
 import com.url.shortener.model.User;
 import com.url.shortener.service.UserService;
@@ -23,11 +25,22 @@ public class AuthController {
         User user = new User();
         user.setUsername(registerRequest.getUsername());
         user.setEmail(registerRequest.getEmail());
+        user.setPassword(registerRequest.getPassword());
         user.setRole("ROLE_USER");
         userService.registerUser(user);
         return ResponseEntity.ok("Register Successfully");
         
     }
+    
+    @PostMapping("/public/login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest){
+        JwtAuthenticationResponse response = userService.authenticationUser(loginRequest);
+        return ResponseEntity.ok(response);
+        
+    }
+    
+    
+    
     
     
 }
