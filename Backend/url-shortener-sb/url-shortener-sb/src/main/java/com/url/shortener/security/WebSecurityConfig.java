@@ -26,10 +26,8 @@ public class WebSecurityConfig {
 
     private UserDetailsService userDetails;
 
-    public JwtAuthenticationFilter jwtAuthenticationFilter(){
-        return new JwtAuthenticationFilter();
-
-    }
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+   
     
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -63,7 +61,7 @@ public class WebSecurityConfig {
         http.authenticationProvider(authenticationProvider());
         
         //add jwt authentication filter into filter chain
-        http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         
         return http.build();
     }
