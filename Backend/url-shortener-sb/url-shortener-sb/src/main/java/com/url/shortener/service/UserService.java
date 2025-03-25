@@ -9,4 +9,6 @@ public interface UserService {
     User registerUser(User user);
     
     JwtAuthenticationResponse authenticationUser(LoginRequest loginRequest);
+    
+    User findByUsername(String name);
 }
