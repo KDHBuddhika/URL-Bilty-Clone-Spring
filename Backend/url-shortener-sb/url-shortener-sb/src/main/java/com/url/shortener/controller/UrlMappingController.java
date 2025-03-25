@@ -16,7 +16,7 @@ import java.security.Principal;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/url/")
+@RequestMapping("/api/urls")
 public class UrlMappingController {
     
     @Autowired
@@ -26,8 +26,8 @@ public class UrlMappingController {
     private UserService userService;
     
     //{"originalUrl":"http://example.com"}
-    @PostMapping("shorten")
-    @PreAuthorize("hasRole(USER)")
+    @PostMapping("/shorten")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<UrlMappingDTO> createShortUrl(@RequestBody Map<String ,String> request,
                                                         Principal principal)
     {

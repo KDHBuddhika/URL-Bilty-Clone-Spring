@@ -1,6 +1,7 @@
 package com.url.shortener.security.jwt;
 
 import com.url.shortener.service.UserDetailsImpl;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -9,8 +10,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.util.Date;
 import java.util.stream.Collectors;
 
@@ -48,10 +53,27 @@ public class JwtUtils {
                 .signWith(key())
                 .compact();
     }
-
+    
     private Key key(){
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
     }
+    
+//    private SecretKey key() {
+//        byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);
+//        return Keys.hmacShaKeyFor(keyBytes);
+//    }
+//
+//
+//    public JwtUtils() {
+//        try {
+//            KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
+//            SecretKey sk = keyGen.generateKey();
+//            jwtSecret= Base64.getEncoder().encodeToString(sk.getEncoded());
+//
+//        }catch (NoSuchAlgorithmException e){
+//
+//        }
+//    }
 
     public String getUserNameFromToken(String token){
         return Jwts.parser()
@@ -76,4 +98,14 @@ public class JwtUtils {
         }
 
     }
+    
+//    public Claims getClaims(String token) {
+//        return Jwts.parser()
+//                .verifyWith((SecretKey) key())
+//                .build()
+//                .parseSignedClaims(token)
+//                .getPayload();
+//    }
+    
+    
 }
