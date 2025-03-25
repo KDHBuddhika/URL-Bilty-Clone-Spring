@@ -13,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -56,4 +57,16 @@ public class UserServiceIMPL implements UserService {
         String jwt = jwtUtils.generateToken(userDetails);
         return new JwtAuthenticationResponse(jwt);
     }
+    
+    
+    
+    @Override
+    public User findByUsername(String name) {
+        return userRepository.findByUsername(name).orElseThrow(
+                () -> new UsernameNotFoundException("UserNotFound"));
+    }
+    
+    
+    
+    
 }
