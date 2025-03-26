@@ -32,8 +32,10 @@ public class JwtUtils {
     //Authorization  -> Bearer <TOKEN>
     public String getJwtFromHeader(HttpServletRequest request){
         String bearerToken = request.getHeader("Authorization");
+        System.out.println("2 "+bearerToken);
         if(bearerToken != null && bearerToken.startsWith("Bearer ")){
             return bearerToken.substring(7);
+
         }
         return null;
     }
@@ -58,22 +60,7 @@ public class JwtUtils {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
     }
     
-//    private SecretKey key() {
-//        byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);
-//        return Keys.hmacShaKeyFor(keyBytes);
-//    }
-//
-//
-//    public JwtUtils() {
-//        try {
-//            KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
-//            SecretKey sk = keyGen.generateKey();
-//            jwtSecret= Base64.getEncoder().encodeToString(sk.getEncoded());
-//
-//        }catch (NoSuchAlgorithmException e){
-//
-//        }
-//    }
+
 
     public String getUserNameFromToken(String token){
         return Jwts.parser()
@@ -99,13 +86,7 @@ public class JwtUtils {
 
     }
     
-//    public Claims getClaims(String token) {
-//        return Jwts.parser()
-//                .verifyWith((SecretKey) key())
-//                .build()
-//                .parseSignedClaims(token)
-//                .getPayload();
-//    }
+
     
     
 }
