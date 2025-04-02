@@ -2,7 +2,6 @@ package com.url.shortener.security;
 
 
 import com.url.shortener.security.jwt.JwtAuthenticationFilter;
-import com.url.shortener.service.UserDetailsImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
