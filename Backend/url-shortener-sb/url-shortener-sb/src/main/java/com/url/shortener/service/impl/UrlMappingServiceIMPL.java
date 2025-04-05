@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -30,6 +32,8 @@ public class UrlMappingServiceIMPL implements UrlMappingService {
         
         return convertToDto(saveUrlMapping);
     }
+    
+ 
     
     private String generateUrl() {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
@@ -53,5 +57,13 @@ public class UrlMappingServiceIMPL implements UrlMappingService {
         urlMappingDTO.setCreatedDate(urlMapping.getCreatedDate());
         urlMappingDTO.setUsername(urlMapping.getUser().getUsername());
         return urlMappingDTO;
+    }
+    
+    
+    
+    @Override
+    public List<UrlMappingDTO> getUrlsByUser(User user) {
+        return urlMappingRepository.findByUser(user).stream()
+                .map(this::convertToDto).toList();
     }
 }
