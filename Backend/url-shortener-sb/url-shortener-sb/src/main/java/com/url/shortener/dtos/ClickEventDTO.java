@@ -9,6 +9,6 @@ import java.time.LocalDate;
 @Data
 public class ClickEventDTO {
   
-    private LocalDate createdDate;
+    private LocalDate clickDate;
     private Long count;
 }
