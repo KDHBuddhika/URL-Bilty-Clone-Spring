@@ -76,7 +76,18 @@ public class UrlMappingServiceIMPL implements UrlMappingService {
     public List<ClickEventDTO> getClickEventByDate(String shortUrl, LocalDateTime start, LocalDateTime end) {
         UrlMapping urlMapping =urlMappingRepository.findByShortUrl(shortUrl);
         if(urlMapping != null){
-              
+           
+            //Groups by date: Counts how many clicks happened on each day.
+            return clickEventRepository.findByUrlMappingAndClickDateBetween(urlMapping , start,end).stream()
+                    .collect(Collectors.groupingBy(click -> click.getClickDate().toLocalDate() , Collectors.counting()))
+                    .entrySet().stream()
+                    .map(entry -> {
+                        ClickEventDTO clickEventDTO = new ClickEventDTO();
+                        clickEventDTO.setClickDate(entry.getKey());
+                        clickEventDTO.setCount(entry.getValue());
+                        return  clickEventDTO;
+                    })
+                    .collect(Collectors.toList());
         }
         return null;
     }

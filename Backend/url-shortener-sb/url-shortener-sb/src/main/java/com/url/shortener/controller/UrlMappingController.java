@@ -55,9 +55,9 @@ public class UrlMappingController {
     
     @GetMapping("/analytics/{shortUrl}")
     @PreAuthorize("hasRole('USER')")
-    public ResponseEntity<List<ClickEventDTO>> getUserUrls(@PathVariable String shortUrl,
-                                                           @RequestParam("startDate") String startDate ,
-                                                           @RequestParam("endDate") String endDate){
+    public ResponseEntity<List<ClickEventDTO>> getUrlAnalytics(@PathVariable String shortUrl,
+                                                               @RequestParam("startDate") String startDate ,
+                                                               @RequestParam("endDate") String endDate){
         //The ISO format looks like: "2023-12-31T23:59:59"
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
         LocalDateTime start = LocalDateTime.parse(startDate , formatter);
