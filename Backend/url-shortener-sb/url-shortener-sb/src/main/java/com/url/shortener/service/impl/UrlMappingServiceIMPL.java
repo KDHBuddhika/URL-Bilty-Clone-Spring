@@ -104,4 +104,10 @@ public class UrlMappingServiceIMPL implements UrlMappingService {
                 .collect(Collectors.groupingBy(click -> click.getClickDate().toLocalDate(),Collectors.counting()));
         
     }
+    
+    @Override
+    public UrlMapping getOriginalUrl(String shortUrl) {
+        UrlMapping urlMapping = urlMappingRepository.findByShortUrl(shortUrl);
+        return urlMapping;
+    }
 }

@@ -54,6 +54,8 @@ public class UrlMappingController {
     }
     
     
+    
+    // get all clicks by shorturl
     @GetMapping("/analytics/{shortUrl}")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<List<ClickEventDTO>> getUrlAnalytics(@PathVariable String shortUrl,
@@ -69,6 +71,9 @@ public class UrlMappingController {
         
     }
     
+    
+    
+    // get all clicks as a list  by user
     
     @GetMapping("/totalClicks")
     @PreAuthorize("hasRole('USER')")

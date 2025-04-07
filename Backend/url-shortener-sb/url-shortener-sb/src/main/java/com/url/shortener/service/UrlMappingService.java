@@ -2,6 +2,7 @@ package com.url.shortener.service;
 
 import com.url.shortener.dtos.ClickEventDTO;
 import com.url.shortener.dtos.UrlMappingDTO;
+import com.url.shortener.model.UrlMapping;
 import com.url.shortener.model.User;
 
 import java.time.LocalDate;
@@ -17,4 +18,6 @@ public interface UrlMappingService {
     List<ClickEventDTO> getClickEventByDate(String shortUrl, LocalDateTime start, LocalDateTime end);
     
     Map<LocalDate, Long> getTotalClicksByUserAndDate(User user, LocalDate start, LocalDate end);
+    
+    UrlMapping getOriginalUrl(String shortUrl);
 }
