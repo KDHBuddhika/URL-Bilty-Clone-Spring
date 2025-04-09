@@ -8,7 +8,7 @@ import { RxCross2 } from "react-icons/rx";
 const Navbar = () => {
 //   const navigate = useNavigate();
 //   const { token, setToken } = useStoreContext();
-//   const path = useLocation().pathname;
+  const path = useLocation().pathname;
   const [navbarOpen, setNavbarOpen] = useState(false);
 
 //   const onLogOutHandler = () => {
