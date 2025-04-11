@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoIosMenu } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
-import { useStoreContext } from "../contextApi/contextApi";
-
-
+import { useStoreContext } from "../contextApi/ContextApi";
 
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { token, setToken } = useStoreContext
-
+  const { token, setToken } = useStoreContext();
   const path = useLocation().pathname;
   const [navbarOpen, setNavbarOpen] = useState(false);
 
@@ -21,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="h-16 bg-gradient-to-r from-blue-500 to-purple-600  z-50 flex items-center sticky top-0 ">
+    <div className="h-16 bg-custom-gradient  z-50 flex items-center sticky top-0 ">
       <div className="lg:px-14 sm:px-8 px-4 w-full flex justify-between">
         <Link to="/">
           <h1 className="font-bold text-3xl text-white italic sm:mt-0 mt-2">

@@ -3,20 +3,19 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import Card from "./Card";
-import { useStoreContext } from "../contextApi/contextApi";
-
+import { useStoreContext } from "../contextApi/ContextApi";
 
 let desc =
   "Generate short, memorable links with ease using Linklytics’s intuitive interface. Share URLs effortlessly across platforms. Optimize your sharing strategy with Linklytics. Track clicks and manage your links seamlessly to enhance your online presence. Generate short, memorable links with ease using Linklytics’s intuitive interface. Share URLs effortlessly across platforms.";
 
 const LandingPage = () => {
   const navigate = useNavigate();
- const { token } = useStoreContext();
+  const { token } = useStoreContext();
   console.log("TOKEN FROM LANDING PAGE: " + token);
 
-//   const dashBoardNavigateHandler = () => {
+  const dashBoardNavigateHandler = () => {
 
-//   };
+  };
   return (
     <div className="min-h-[calc(100vh-64px)]  lg:px-14 sm:px-8 px-4">
       <div className="lg:flex-row flex-col    lg:py-5   pt-16   lg:gap-10 gap-8 flex justify-between items-center">
@@ -48,8 +47,8 @@ const LandingPage = () => {
               }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-            //   onClick={dashBoardNavigateHandler}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white w-40 rounded-md py-2"
+              onClick={dashBoardNavigateHandler}
+              className="bg-custom-gradient  w-40 text-white rounded-md  py-2"
             >
               Manage Links
             </motion.button>
@@ -61,7 +60,7 @@ const LandingPage = () => {
               }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-            //   onClick={dashBoardNavigateHandler}
+              onClick={dashBoardNavigateHandler}
               className="border-btnColor border w-40 text-btnColor rounded-md  py-2 "
             >
               Create Short Link
@@ -77,7 +76,7 @@ const LandingPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="sm:w-[480px] w-[400px] object-cover rounded-md"
-            src="/images/image.png"
+            src="/images/img2.png"
             alt=""
           />
         </div>

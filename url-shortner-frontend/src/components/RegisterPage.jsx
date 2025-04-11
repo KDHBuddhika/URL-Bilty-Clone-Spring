@@ -91,7 +91,7 @@ const RegisterPage = () => {
             <button
                 disabled={loader}
                 type='submit'
-                className='bg-customRed font-semibold text-white  bg-gradient-to-r from-blue-500 to-purple-600 w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-sm my-3'>
+                className='bg-customRed font-semibold text-white  bg-custom-gradient w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-sm my-3'>
                 {loader ? "Loading..." : "Register"}
             </button>
 
