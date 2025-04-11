@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import Graph from './Graph'
 import { dummyData } from '../../dummyData/data'
-
+import { useStoreContext } from '../../contextApi/ContextApi'
 import { useFetchMyShortUrls, useFetchTotalClicks } from '../../hooks/useQuery'
 import ShortenPopUp from './ShortenPopUp'
 import { FaLink } from 'react-icons/fa'
 import ShortenUrlList from './ShortenUrlList'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../Loader'
-import { useStoreContext } from '../../contextApi/contextApi'
 
 const DashboardLayout = () => {
     // const refetch = false;
@@ -48,7 +47,7 @@ const DashboardLayout = () => {
             </div>
             <div className='py-5 sm:text-end text-center'>
                 <button
-                    className='bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-md text-white'
+                    className='bg-custom-gradient px-4 py-2 rounded-md text-white'
                     onClick={() => setShortenPopUp(true)}>
                     Create a New Short URL
                 </button>

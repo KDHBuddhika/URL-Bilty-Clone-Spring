@@ -4,8 +4,7 @@ import TextField from './TextField';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../api/api';
 import toast from 'react-hot-toast';
-import { useStoreContext } from '../contextApi/contextApi';
-
+import { useStoreContext } from '../contextApi/ContextApi';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -78,7 +77,7 @@ const LoginPage = () => {
                     message="*Password is required"
                     placeholder="Type your password"
                     register={register}
-                    min={6}
+                    min={3}
                     errors={errors}
                 />
             </div>

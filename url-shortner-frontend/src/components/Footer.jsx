@@ -3,7 +3,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-blue-500 to-purple-600 text-white py-8 z-40 relative">
+    <footer className="bg-custom-gradient text-white py-8 z-40 relative">
       <div className="container mx-auto px-6 lg:px-14 flex flex-col lg:flex-row lg:justify-between items-center gap-4">
         <div className="text-center lg:text-left">
           <h2 className="text-3xl font-bold mb-2">Linklytics</h2>
